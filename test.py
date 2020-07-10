@@ -92,6 +92,7 @@ def FrogJmp2(X, Y, D):
     else:
         return distance // D + 1
 
+
 # Codility Lesson 3-2 #[2, 3, 1, 5]
 def PermMissingElem(A):
     should_be = len(A)
