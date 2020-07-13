@@ -92,16 +92,64 @@ def FrogJmp2(X, Y, D):
     else:
         return distance // D + 1
 
-
 # Codility Lesson 3-2 #[2, 3, 1, 5]
-def PermMissingElem(A):
-    should_be = len(A)
-    sum_is = 0
-    for idx in range(len(A)):
-        sum_is += A[idx]
-        should_be += idx+1
-    return should_be - sum_is +1
+def PermMissingElem1(A):
+    lenA = len(A)
+    should_be = max(A)
+    sum_is = sum(A)
+    for i in range(lenA):
+        # print(i)
+        should_be += i+1
+    return should_be - sum_is
 
-# print('Result:', PermMissingElem([2, 3, 1, 5]))
+# Codility Lesson 3-3 #[3, 1, 2, 4, 3]
+def TapeEquilibrium1(A):
+    head = A[0] #3
+    tail = sum(A[1:]) #10
+    diff = abs(head - tail) #7
+    for idx in range(1, len(A)-1):
+        head += A[idx]
+        tail -= A[idx]
+        print(idx, head, tail) #idx 1-4, 4, 9
+        if abs(head - tail) < diff:
+            diff = abs(head - tail)
+    return diff
 
+# Codility Lesson 3-3
+def TapeEquilibrium2(A):
+    head, tail, tmp = 0, 0, []
+    for i in range(len(A)):
+        head += A[i]
+        tail = sum(A[i+1:])
+        print(i, head, tail)
+        tmp.append(abs(head - tail))
+    return min(tmp)
+
+# Codility Lesson 4-1
+def FrogRiverOne(X, A):
+    return A.index(X)
+
+# Codility Lesson 4-2  #5, [3, 4, 4, 6, 1, 4, 4])
+def MaxCounters(N, A):
+    counter = [0]*N
+    for item in A:
+        if 1 <= item <= N:
+            counter[item-1] += 1
+        else:
+            counter[:] = [max(counter)]*N
+
+    return counter
+
+
+# Codility Lesson 4-3  # [1, 3, 6, 4, 1, 2]
+def MissingInteger(A):
+    for idx in range(1, len(A)):
+        print(idx)
+        if idx not in A:
+            return idx
+        if A[idx] < 0:
+            return 1
+    return idx + 1
+
+print('Result:', MissingInteger([1, 2, 3, 4]))
 
