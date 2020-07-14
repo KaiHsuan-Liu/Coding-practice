@@ -125,9 +125,15 @@ def TapeEquilibrium2(A):
         tmp.append(abs(head - tail))
     return min(tmp)
 
-# Codility Lesson 4-1
+# Codility Lesson 4-1  # 5, [1, 3, 1, 4, 2, 3, 5, 4]
 def FrogRiverOne(X, A):
-    return A.index(X)
+    pos = set()
+    for i, j in enumerate(A):
+        pos.add(j)
+        print(i, j, pos)
+        if len(pos) == X:
+            return i
+    return -1
 
 # Codility Lesson 4-2  #5, [3, 4, 4, 6, 1, 4, 4])
 def MaxCounters(N, A):
@@ -140,7 +146,6 @@ def MaxCounters(N, A):
 
     return counter
 
-
 # Codility Lesson 4-3  # [1, 3, 6, 4, 1, 2]
 def MissingInteger(A):
     for idx in range(1, len(A)):
@@ -151,5 +156,37 @@ def MissingInteger(A):
             return 1
     return idx + 1
 
-print('Result:', MissingInteger([1, 2, 3, 4]))
+# Codility Lesson 4-4  # [4, 1, 3, 2]
+def PermCheck(A):
+    # write your code in Python 3.6
+    S = set(A)
+    print(S)
+    if max(S) == len(A) and len(S) == len(A):
+        return 1
+    else:
+        return 0
+
+
+# Codility Lesson 5-1  # 6, 11, 2
+def CountDiv(A, B, K):
+    for idx in range(A, B ,K):
+        print(idx)
+
+
+# Codility Lesson 5-1  # 6, 11, 2
+def CountDiv(A, B, K):
+    count = 0
+    for idx in range(A, B+1):
+        # print(idx)
+        if idx % K == 0:
+            count += 1
+    return count
+
+# Codility Lesson 5-2  # S = "CAGCCTA",P = [2, 5, 0], Q = [4, 5, 6]
+def GenomicRangeQuery(S = "CAGCCTA",P = [2, 5, 0], Q = [4, 5, 6]):
+    length = len(S)
+    matrix = [([0] * length) for i in range(len(mapping))]
+    print(length, matrix)
+
+print ('Result:', GenomicRangeQuery())
 
